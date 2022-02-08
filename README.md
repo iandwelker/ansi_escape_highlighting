@@ -1,0 +1,1 @@
+Simple project to experiment with highlighting regexes within a string, ansi-escape-insensitively (highlighting regexes within a string that contains ansi escapes, but treating the string as if it has no ansi escapes while preserving the effect of the ansi escapes on the text outside of the highlights).
