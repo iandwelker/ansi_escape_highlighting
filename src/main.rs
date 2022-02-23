@@ -10,7 +10,7 @@ lazy_static::lazy_static! {
 fn main() {
 	// So first - get a strip that's stripped of ansi escapes
 	// if it doesn't contain the pattern, return
-	// Iterate through orig string, get Vec<(usize, usize)> where .0 == index of escape in stripped
+	// Iterate through orig string, get Vec<(usize, &str)> where .0 == index of escape in stripped
 	//     string, and .1 == escape string itself
 	// Get indexes of start and end of each match
 	// For each match:
@@ -51,7 +51,7 @@ pub fn highlight_ansi_insensitive<T: Into<String>>(orig_str: T, search_term: &st
 	let mut sum_width = 0;
 
 	// find all ansi escapes in the original string, and map them
-	// to a Vec(usize, usize, &str) where
+	// to a Vec<(usize, &str)> where
 	//   .0 == the start index in the STRIPPED string
 	//   .1 == the escape sequence itself
 	let escapes = ANSI_REGEX.find_iter(&orig_str).map(|escape| {
